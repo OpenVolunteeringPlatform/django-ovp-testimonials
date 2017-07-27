@@ -44,11 +44,11 @@ found at: %s
 
 
 def get_authenticated_service(args):
-  flow = flow_from_clientsecrets(os.path.abspath(os.path.join(os.path.dirname(__file__), CLIENT_SECRETS_FILE)),
+  flow = flow_from_clientsecrets(os.path.abspath(CLIENT_SECRETS_FILE),
     scope=YOUTUBE_UPLOAD_SCOPE,
     message=MISSING_CLIENT_SECRETS_MESSAGE)
 
-  storage = Storage(os.path.abspath(os.path.join(os.path.dirname(__file__), "youtube-oauth2.json")))
+  storage = Storage(os.path.abspath("youtube-oauth2.json"))
   credentials = storage.get()
 
   if credentials is None or credentials.invalid:

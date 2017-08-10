@@ -20,6 +20,7 @@ class TestimonialResource(mixins.CreateModelMixin, mixins.ListModelMixin, viewse
   TestimonialResource endpoint
   """
   queryset = models.Testimonial.objects.filter(published=True)
+  pagination_class = helpers.NoPagination
 
   def create(self, request, *args, **kwargs):
     s = helpers.get_settings('OVP_TESTIMONIALS')

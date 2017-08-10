@@ -12,6 +12,7 @@ from apiclient.http import MediaFileUpload
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
+from rest_framework import pagination
 
 from tempfile import mkstemp
 
@@ -82,3 +83,9 @@ def initialize_upload(youtube, options):
 
   status, response = insert_request.next_chunk()
   return response
+
+
+class NoPagination(pagination.PageNumberPagination):
+  page_size = 0
+  page_size_query_param = 'page_size'
+  max_page_size = 0
